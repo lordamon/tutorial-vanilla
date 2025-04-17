@@ -12,8 +12,11 @@ document.querySelector("#counter button").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
   loadRandomuser();
 });
-document.querySelector("#randomUser button").addEventListener("click", () => {
+document.querySelector("#randomUser button#btnLoadRandomUser").addEventListener("click", () => {
   loadRandomuser();
+});
+document.querySelector("#randomUser button#btnForceError").addEventListener("click", () => {
+  loadRandomuser(true);
 });
 
 //***************************************
@@ -40,15 +43,19 @@ function escapeHtml(str) {
 }
 
 //esegue fetch su API randomUser
-async function loadRandomuser() {
+async function loadRandomuser(forceError = false) {
   const domBlock = document.querySelector("#randomUser");
 
+  //reset stato
   domBlock.classList.add("isLoading");
+  domBlock.classList.remove("isError");
   document.querySelector("#randomUser span").innerHTML = "";
 
   try {
     // Aggiungi il ritardo di 1 secondo
     await delay(1000);
+
+    if (forceError === true) throw new Error("Errore generico");
 
     // Poi fai la fetch
     const response = await fetch("https://randomuser.me/api/");
@@ -77,7 +84,8 @@ async function loadRandomuser() {
       throw new Error("Dati utente non validi o mancanti");
     }
   } catch (err) {
-    console.error("Errore:", err);
+    domBlock.classList.add("isError");
+    document.querySelector("#randomUser .error").textContent = err;
   } finally {
     domBlock.classList.remove("isLoading");
   }

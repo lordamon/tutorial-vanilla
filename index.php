@@ -29,7 +29,9 @@
         <h2 class="title">Random user</h2>
         <div class="spinner"></div>
         <span></span>
-        <button class="btn btn-light">Reload</button>
+        <div class="error"></div>
+        <button id="btnLoadRandomUser" class="btn btn-light">Reload</button>
+        <button id="btnForceError" class="btn btn-danger">Mostra errore</button>
     </div>
 
     <script src="main.js"></script>
