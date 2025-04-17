@@ -1,0 +1,70 @@
+html,
+body {
+  background: #000;
+}
+
+.block {
+  background: #ccc;
+  padding: 20px 10px;
+  margin: 20px 10px;
+  border-radius: 16px;
+}
+
+.title {
+  font-size: 2rem;
+  line-height: 2rem;
+}
+
+.btn {
+  border-radius: 16px;
+  background-color: #3333ff;
+  border: 0px solid #ccc;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn.btn-light {
+  border-radius: 16px;
+  background-color: #efefef;
+  border: 1px solid #ccc;
+  color: #000;
+}
+
+.spinner {
+  display: none;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #e0e0e0;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#randomUser.isLoading button {
+  display: none;
+}
+
+#randomUser.isLoading span {
+  display: none;
+}
+
+#randomUser.isLoading .spinner {
+  display: block;
+}
+
+#randomUser img {
+  display: block;
+  width: 128px;
+  height: 128px;
+  border-radius: 16px;
+}
